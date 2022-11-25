@@ -77,7 +77,7 @@ contract ProposalPayloadE2ETest is Test {
             .AAVE_PROTOCOL_DATA_PROVIDER
             .getReserveConfigurationData(proposalPayload.BAT());
         assertFalse(batFrozen);
-        assertTrue(batBorrowingEnabled);
+        assertFalse(batBorrowingEnabled);
 
         /// SUSD
         (, , , , , bool susdUsageAsCollateralEnabled, bool susdBorrowingEnabled, , , bool susdFrozen) = AaveV2Ethereum

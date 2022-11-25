@@ -24,8 +24,8 @@ import {AaveV2Ethereum} from "@aave-address-book/AaveV2Ethereum.sol";
 
 /**
  * @title Risk Parameter Recommendations for Aave V2 ETH
- * @author Llama
- * @notice <DESCRIPTION>
+ * @author Llama & Chaos
+ * @notice Llama and Chaos propose to make a series of parameter changes to the Ethereum Aave v2 Liquidity Pool.
  * Governance Forum Post: https://governance.aave.com/t/arc-risk-parameter-recommendations-for-aave-v2-eth-2022-11-22/10757
  * Snapshot: N/A (shotgunned onchain)
  */
@@ -55,8 +55,8 @@ contract ProposalPayload {
 
     /// @notice The AAVE governance executor calls this function to implement the proposal.
     function execute() external {
-        /// we use 9_900 instead of 10_000 to aave v2 bug.
-        /// unfreezing a reserve when its not frozen is a noop   
+        /// we use 9_900 instead of 10_000 on reserve factor due to aave v2 bug.
+        /// unfreezing a reserve when its not frozen is a noop  
         /// freezing an already frozen reserve is a noop
 
         /// YFI
@@ -80,7 +80,7 @@ contract ProposalPayload {
 
         /// BAT
         AaveV2Ethereum.POOL_CONFIGURATOR.unfreezeReserve(BAT);
-        AaveV2Ethereum.POOL_CONFIGURATOR.enableBorrowingOnReserve(BAT, false);
+        AaveV2Ethereum.POOL_CONFIGURATOR.disableBorrowingOnReserve(BAT);
 
         /// SUSD
         AaveV2Ethereum.POOL_CONFIGURATOR.unfreezeReserve(SUSD);
