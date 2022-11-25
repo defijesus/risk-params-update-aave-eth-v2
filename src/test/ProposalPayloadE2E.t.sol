@@ -39,11 +39,10 @@ contract ProposalPayloadE2ETest is Test {
 
         // Post-execution assertations
         /// YFI
-        (, , , , , , bool yfiBorrowingEnabled, , , bool yfiFrozen) = AaveV2Ethereum
-            .AAVE_PROTOCOL_DATA_PROVIDER
-            .getReserveConfigurationData(proposalPayload.YFI());
-        assertFalse(yfiFrozen);
-        assertFalse(yfiBorrowingEnabled);
+        (, , , , , , , , , bool yfiFrozen) = AaveV2Ethereum.AAVE_PROTOCOL_DATA_PROVIDER.getReserveConfigurationData(
+            proposalPayload.YFI()
+        );
+        assertTrue(yfiFrozen);
 
         /// CRV
         (, , , , , , bool crvBorrowingEnabled, , , bool crvFrozen) = AaveV2Ethereum
@@ -59,11 +58,10 @@ contract ProposalPayloadE2ETest is Test {
         assertTrue(zrxFrozen);
 
         /// MANA
-        (, , , , , , bool manaBorrowingEnabled, , , bool manaFrozen) = AaveV2Ethereum
-            .AAVE_PROTOCOL_DATA_PROVIDER
-            .getReserveConfigurationData(proposalPayload.MANA());
-        assertFalse(manaFrozen);
-        assertFalse(manaBorrowingEnabled);
+        (, , , , , , , , , bool manaFrozen) = AaveV2Ethereum.AAVE_PROTOCOL_DATA_PROVIDER.getReserveConfigurationData(
+            proposalPayload.MANA()
+        );
+        assertTrue(manaFrozen);
 
         /// 1INCH
         (, , , , , , bool oneinchBorrowingEnabled, , , bool oneinchFrozen) = AaveV2Ethereum
@@ -73,11 +71,10 @@ contract ProposalPayloadE2ETest is Test {
         assertFalse(oneinchBorrowingEnabled);
 
         /// BAT
-        (, , , , , , bool batBorrowingEnabled, , , bool batFrozen) = AaveV2Ethereum
-            .AAVE_PROTOCOL_DATA_PROVIDER
-            .getReserveConfigurationData(proposalPayload.BAT());
-        assertFalse(batFrozen);
-        assertFalse(batBorrowingEnabled);
+        (, , , , , , , , , bool batFrozen) = AaveV2Ethereum.AAVE_PROTOCOL_DATA_PROVIDER.getReserveConfigurationData(
+            proposalPayload.BAT()
+        );
+        assertTrue(batFrozen);
 
         /// SUSD
         (, , , , , bool susdUsageAsCollateralEnabled, bool susdBorrowingEnabled, , , bool susdFrozen) = AaveV2Ethereum
@@ -88,11 +85,10 @@ contract ProposalPayloadE2ETest is Test {
         assertFalse(susdUsageAsCollateralEnabled);
 
         /// ENJ
-        (, , , , , , bool enjBorrowingEnabled, , , bool enjFrozen) = AaveV2Ethereum
-            .AAVE_PROTOCOL_DATA_PROVIDER
-            .getReserveConfigurationData(proposalPayload.ENJ());
-        assertFalse(enjFrozen);
-        assertFalse(enjBorrowingEnabled);
+        (, , , , , , , , , bool enjFrozen) = AaveV2Ethereum.AAVE_PROTOCOL_DATA_PROVIDER.getReserveConfigurationData(
+            proposalPayload.ENJ()
+        );
+        assertTrue(enjFrozen);
 
         /// GUSD
         (, , , , , bool gusdUsageAsCollateralEnabled, bool gusdBorrowingEnabled, , , bool gusdFrozen) = AaveV2Ethereum
@@ -103,11 +99,10 @@ contract ProposalPayloadE2ETest is Test {
         assertFalse(gusdUsageAsCollateralEnabled);
 
         /// AMPL
-        (, , , , uint256 amplReserveFactor, , , , , bool amplFrozen) = AaveV2Ethereum
-            .AAVE_PROTOCOL_DATA_PROVIDER
-            .getReserveConfigurationData(proposalPayload.AMPL());
+        (, , , , , , , , , bool amplFrozen) = AaveV2Ethereum.AAVE_PROTOCOL_DATA_PROVIDER.getReserveConfigurationData(
+            proposalPayload.AMPL()
+        );
         assertTrue(amplFrozen);
-        assertEq(amplReserveFactor, 9_900);
 
         /// RAI
         (, , , , , , , , , bool raiFrozen) = AaveV2Ethereum.AAVE_PROTOCOL_DATA_PROVIDER.getReserveConfigurationData(
@@ -132,11 +127,10 @@ contract ProposalPayloadE2ETest is Test {
         assertTrue(lusdBorrowingEnabled);
 
         /// xSUSHI
-        (, , , , , , bool xsushiBorrowingEnabled, , , bool xsushiFrozen) = AaveV2Ethereum
-            .AAVE_PROTOCOL_DATA_PROVIDER
-            .getReserveConfigurationData(proposalPayload.X_SUSHI());
-        assertFalse(xsushiFrozen);
-        assertFalse(xsushiBorrowingEnabled);
+        (, , , , , , , , , bool xsushiFrozen) = AaveV2Ethereum.AAVE_PROTOCOL_DATA_PROVIDER.getReserveConfigurationData(
+            proposalPayload.X_SUSHI()
+        );
+        assertTrue(xsushiFrozen);
 
         /// DPI
         (, , , , , , bool dpiBorrowingEnabled, , , bool dpiFrozen) = AaveV2Ethereum
@@ -146,11 +140,10 @@ contract ProposalPayloadE2ETest is Test {
         assertFalse(dpiBorrowingEnabled);
 
         /// renFIL
-        (, , , , uint256 renfilReserveFactor, , , , , bool renfilFrozen) = AaveV2Ethereum
-            .AAVE_PROTOCOL_DATA_PROVIDER
-            .getReserveConfigurationData(proposalPayload.REN_FIL());
+        (, , , , , , , , , bool renfilFrozen) = AaveV2Ethereum.AAVE_PROTOCOL_DATA_PROVIDER.getReserveConfigurationData(
+            proposalPayload.REN_FIL()
+        );
         assertTrue(renfilFrozen);
-        assertEq(renfilReserveFactor, 9_900);
 
         /// MKR
         (, , , , , , bool mkrBorrowingEnabled, , , bool mkrFrozen) = AaveV2Ethereum
@@ -176,5 +169,11 @@ contract ProposalPayloadE2ETest is Test {
             .AAVE_PROTOCOL_DATA_PROVIDER
             .getReserveConfigurationData(proposalPayload.UNI());
         assertFalse(uniBorrowingEnabled);
+
+        /// SNX
+        (, , , , , , , , , bool snxFrozen) = AaveV2Ethereum.AAVE_PROTOCOL_DATA_PROVIDER.getReserveConfigurationData(
+            proposalPayload.SNX()
+        );
+        assertTrue(snxFrozen);
     }
 }

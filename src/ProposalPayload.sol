@@ -51,17 +51,17 @@ contract ProposalPayload {
     address public constant ONE_INCH = 0x111111111117dC0aa78b770fA6A738034120C302;
     address public constant LUSD = 0x5f98805A4E8be255a32880FDeC7F6728C6568bA0;
     address public constant DPI = 0x1494CA1F11D487c2bBe4543E90080AeBa4BA3C2b;
+    address public constant SNX = 0xC011a73ee8576Fb46F5E1c5751cA3B9Fe0af2a6F;
 
 
     /// @notice The AAVE governance executor calls this function to implement the proposal.
     function execute() external {
-        /// we use 9_900 instead of 10_000 on reserve factor due to aave v2 bug.
         /// unfreezing a reserve when its not frozen is a noop  
         /// freezing an already frozen reserve is a noop
+        /// disabling borrowing on a reserve when its already disabled is a noop
 
         /// YFI
-        AaveV2Ethereum.POOL_CONFIGURATOR.unfreezeReserve(YFI);
-        AaveV2Ethereum.POOL_CONFIGURATOR.disableBorrowingOnReserve(YFI);
+        AaveV2Ethereum.POOL_CONFIGURATOR.freezeReserve(YFI);
 
         /// CRV
         AaveV2Ethereum.POOL_CONFIGURATOR.unfreezeReserve(CRV);
@@ -71,30 +71,26 @@ contract ProposalPayload {
         AaveV2Ethereum.POOL_CONFIGURATOR.freezeReserve(ZRX);
 
         /// MANA
-        AaveV2Ethereum.POOL_CONFIGURATOR.unfreezeReserve(MANA);
-        AaveV2Ethereum.POOL_CONFIGURATOR.disableBorrowingOnReserve(MANA);
+        AaveV2Ethereum.POOL_CONFIGURATOR.freezeReserve(MANA);
 
         /// 1INCH
         AaveV2Ethereum.POOL_CONFIGURATOR.unfreezeReserve(ONE_INCH);
         AaveV2Ethereum.POOL_CONFIGURATOR.disableBorrowingOnReserve(ONE_INCH);
 
         /// BAT
-        AaveV2Ethereum.POOL_CONFIGURATOR.unfreezeReserve(BAT);
-        AaveV2Ethereum.POOL_CONFIGURATOR.disableBorrowingOnReserve(BAT);
+        AaveV2Ethereum.POOL_CONFIGURATOR.freezeReserve(BAT);
 
         /// SUSD
         AaveV2Ethereum.POOL_CONFIGURATOR.unfreezeReserve(SUSD);
 
         /// ENJ
-        AaveV2Ethereum.POOL_CONFIGURATOR.unfreezeReserve(ENJ);
-        AaveV2Ethereum.POOL_CONFIGURATOR.disableBorrowingOnReserve(ENJ);
+        AaveV2Ethereum.POOL_CONFIGURATOR.freezeReserve(ENJ);
 
         /// GUSD
         AaveV2Ethereum.POOL_CONFIGURATOR.unfreezeReserve(GUSD);
 
         /// AMPL
         AaveV2Ethereum.POOL_CONFIGURATOR.freezeReserve(AMPL);
-        AaveV2Ethereum.POOL_CONFIGURATOR.setReserveFactor(AMPL, 9_900);
 
         /// RAI
         AaveV2Ethereum.POOL_CONFIGURATOR.freezeReserve(RAI);
@@ -106,8 +102,7 @@ contract ProposalPayload {
         AaveV2Ethereum.POOL_CONFIGURATOR.unfreezeReserve(LUSD);
 
         /// xSUSHI
-        AaveV2Ethereum.POOL_CONFIGURATOR.unfreezeReserve(X_SUSHI);
-        AaveV2Ethereum.POOL_CONFIGURATOR.disableBorrowingOnReserve(X_SUSHI);
+        AaveV2Ethereum.POOL_CONFIGURATOR.freezeReserve(X_SUSHI);
 
         /// DPI
         AaveV2Ethereum.POOL_CONFIGURATOR.unfreezeReserve(DPI);
@@ -115,7 +110,6 @@ contract ProposalPayload {
 
         /// renFIL
         AaveV2Ethereum.POOL_CONFIGURATOR.freezeReserve(REN_FIL);
-        AaveV2Ethereum.POOL_CONFIGURATOR.setReserveFactor(REN_FIL, 9_900);
 
         /// MKR
         AaveV2Ethereum.POOL_CONFIGURATOR.unfreezeReserve(MKR);
@@ -129,5 +123,8 @@ contract ProposalPayload {
 
         /// UNI
         AaveV2Ethereum.POOL_CONFIGURATOR.disableBorrowingOnReserve(UNI);
+
+        /// SNX
+        AaveV2Ethereum.POOL_CONFIGURATOR.freezeReserve(SNX);
     }
 }
