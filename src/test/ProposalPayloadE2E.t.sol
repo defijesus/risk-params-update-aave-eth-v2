@@ -171,9 +171,10 @@ contract ProposalPayloadE2ETest is Test {
         assertFalse(uniBorrowingEnabled);
 
         /// SNX
-        (, , , , , , , , , bool snxFrozen) = AaveV2Ethereum.AAVE_PROTOCOL_DATA_PROVIDER.getReserveConfigurationData(
-            proposalPayload.SNX()
-        );
-        assertTrue(snxFrozen);
+        (, , , , , , bool snxBorrowingEnabled, , , bool snxFrozen) = AaveV2Ethereum
+            .AAVE_PROTOCOL_DATA_PROVIDER
+            .getReserveConfigurationData(proposalPayload.SNX());
+        assertFalse(snxFrozen);
+        assertFalse(snxBorrowingEnabled);
     }
 }

@@ -125,6 +125,7 @@ contract ProposalPayload {
         AaveV2Ethereum.POOL_CONFIGURATOR.disableBorrowingOnReserve(UNI);
 
         /// SNX
-        AaveV2Ethereum.POOL_CONFIGURATOR.freezeReserve(SNX);
+        AaveV2Ethereum.POOL_CONFIGURATOR.unfreezeReserve(SNX);
+        AaveV2Ethereum.POOL_CONFIGURATOR.disableBorrowingOnReserve(SNX);
     }
 }
