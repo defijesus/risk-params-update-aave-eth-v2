@@ -25,7 +25,7 @@ import {AaveV2Ethereum} from "@aave-address-book/AaveV2Ethereum.sol";
  * @title Risk Parameter Recommendations for Aave V2 ETH
  * @author Llama & Chaos
  * @notice Llama and Chaos propose to make a series of parameter changes to the Ethereum Aave v2 Liquidity Pool.
- * Governance Forum Post: https://governance.aave.com/t/arc-risk-parameter-recommendations-for-aave-v2-eth-2022-11-22/10757
+ * Governance Forum Post: https://governance.aave.com/t/risk-parameter-updates-for-aave-v2-ethereum-liquidity-pool-2022-11-25/10824
  * Snapshot: N/A (shotgunned onchain)
  */
 contract ProposalPayload {
