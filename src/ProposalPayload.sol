@@ -82,14 +82,14 @@ contract ProposalPayload {
         AaveV2Ethereum.POOL_CONFIGURATOR.unfreezeReserve(BAT);
         AaveV2Ethereum.POOL_CONFIGURATOR.disableBorrowingOnReserve(BAT);
 
-        /// SUSD TODO
-
+        /// SUSD
+        AaveV2Ethereum.POOL_CONFIGURATOR.unfreezeReserve(SUSD);
 
         /// ENJ
         AaveV2Ethereum.POOL_CONFIGURATOR.unfreezeReserve(ENJ);
 
-        /// GUSD TODO
-
+        /// GUSD
+        AaveV2Ethereum.POOL_CONFIGURATOR.unfreezeReserve(GUSD);
 
         /// AMPL
         AaveV2Ethereum.POOL_CONFIGURATOR.freezeReserve(AMPL);
