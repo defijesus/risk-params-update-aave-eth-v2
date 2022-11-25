@@ -23,22 +23,22 @@ import {IAaveEcosystemReserveController} from "./external/aave/IAaveEcosystemRes
 import {AaveV2Ethereum} from "@aave-address-book/AaveV2Ethereum.sol";
 
 /**
- * @title <TITLE>
+ * @title Risk Parameter Recommendations for Aave V2 ETH
  * @author Llama
  * @notice <DESCRIPTION>
- * Governance Forum Post:
- * Snapshot:
+ * Governance Forum Post: https://governance.aave.com/t/arc-risk-parameter-recommendations-for-aave-v2-eth-2022-11-22/10757
+ * Snapshot: N/A (shotgunned onchain)
  */
 contract ProposalPayload {
 
-    address public constant renFIL = 0xD5147bc8e386d91Cc5DBE72099DAC6C9b99276F5;
+    address public constant REN_FIL = 0xD5147bc8e386d91Cc5DBE72099DAC6C9b99276F5;
     address public constant MKR = 0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2;
     address public constant ENS = 0xC18360217D8F7Ab5e7c516566761Ea12Ce7F9D72;
     address public constant LINK = 0x514910771AF9Ca656af840dff83E8264EcF986CA;
     address public constant UNI = 0x1f9840a85d5aF5bf1D1762F925BDADdC4201F984;
-    address public constant xSUSHI = 0x8798249c2E607446EfB7Ad49eC89dD1865Ff4272;
+    address public constant X_SUSHI = 0x8798249c2E607446EfB7Ad49eC89dD1865Ff4272;
     address public constant BAT = 0x0D8775F648430679A709E98d2b0Cb6250d2887EF;
-    address public constant sUSD = 0x57Ab1ec28D129707052df4dF418D58a2D46d5f51;
+    address public constant SUSD = 0x57Ab1ec28D129707052df4dF418D58a2D46d5f51;
     address public constant ENJ = 0xF629cBd94d3791C9250152BD8dfBDF380E2a3B9c;
     address public constant GUSD = 0x056Fd409E1d7A124BD7017459dFEa2F387b6d5Cd;
     address public constant AMPL = 0xD46bA6D942050d489DBd938a2C909A5d5039A161;
@@ -48,7 +48,7 @@ contract ProposalPayload {
     address public constant MANA = 0x0F5D2fB29fb7d3CFeE444a200298f468908cC942;
     address public constant YFI = 0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e;
     address public constant CRV = 0xD533a949740bb3306d119CC777fa900bA034cd52;
-    address public constant oneInch = 0x111111111117dC0aa78b770fA6A738034120C302;
+    address public constant ONE_INCH = 0x111111111117dC0aa78b770fA6A738034120C302;
     address public constant LUSD = 0x5f98805A4E8be255a32880FDeC7F6728C6568bA0;
     address public constant DPI = 0x1494CA1F11D487c2bBe4543E90080AeBa4BA3C2b;
 
@@ -75,8 +75,8 @@ contract ProposalPayload {
         AaveV2Ethereum.POOL_CONFIGURATOR.disableBorrowingOnReserve(MANA);
 
         /// 1INCH
-        AaveV2Ethereum.POOL_CONFIGURATOR.unfreezeReserve(oneInch);
-        AaveV2Ethereum.POOL_CONFIGURATOR.disableBorrowingOnReserve(oneInch);
+        AaveV2Ethereum.POOL_CONFIGURATOR.unfreezeReserve(ONE_INCH);
+        AaveV2Ethereum.POOL_CONFIGURATOR.disableBorrowingOnReserve(ONE_INCH);
 
         /// BAT
         AaveV2Ethereum.POOL_CONFIGURATOR.unfreezeReserve(BAT);
@@ -107,16 +107,16 @@ contract ProposalPayload {
         AaveV2Ethereum.POOL_CONFIGURATOR.disableBorrowingOnReserve(LUSD);
 
         /// xSUSHI
-        AaveV2Ethereum.POOL_CONFIGURATOR.unfreezeReserve(xSUSHI);
-        AaveV2Ethereum.POOL_CONFIGURATOR.disableBorrowingOnReserve(xSUSHI);
+        AaveV2Ethereum.POOL_CONFIGURATOR.unfreezeReserve(X_SUSHI);
+        AaveV2Ethereum.POOL_CONFIGURATOR.disableBorrowingOnReserve(X_SUSHI);
 
         /// DPI
         AaveV2Ethereum.POOL_CONFIGURATOR.unfreezeReserve(DPI);
         AaveV2Ethereum.POOL_CONFIGURATOR.disableBorrowingOnReserve(DPI);
 
         /// renFIL
-        AaveV2Ethereum.POOL_CONFIGURATOR.freezeReserve(renFIL);
-        AaveV2Ethereum.POOL_CONFIGURATOR.setReserveFactor(renFIL, 9_900);
+        AaveV2Ethereum.POOL_CONFIGURATOR.freezeReserve(REN_FIL);
+        AaveV2Ethereum.POOL_CONFIGURATOR.setReserveFactor(REN_FIL, 9_900);
 
         /// MKR
         AaveV2Ethereum.POOL_CONFIGURATOR.unfreezeReserve(MKR);
