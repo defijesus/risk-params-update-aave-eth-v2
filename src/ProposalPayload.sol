@@ -19,7 +19,6 @@
 
 pragma solidity ^0.8.15;
 
-import {IAaveEcosystemReserveController} from "./external/aave/IAaveEcosystemReserveController.sol";
 import {AaveV2Ethereum} from "@aave-address-book/AaveV2Ethereum.sol";
 
 /**
@@ -106,7 +105,6 @@ contract ProposalPayload {
 
         /// DPI
         AaveV2Ethereum.POOL_CONFIGURATOR.unfreezeReserve(DPI);
-        AaveV2Ethereum.POOL_CONFIGURATOR.disableBorrowingOnReserve(DPI);
 
         /// renFIL
         AaveV2Ethereum.POOL_CONFIGURATOR.freezeReserve(REN_FIL);
@@ -125,7 +123,6 @@ contract ProposalPayload {
         AaveV2Ethereum.POOL_CONFIGURATOR.disableBorrowingOnReserve(UNI);
 
         /// SNX
-        AaveV2Ethereum.POOL_CONFIGURATOR.unfreezeReserve(SNX);
         AaveV2Ethereum.POOL_CONFIGURATOR.disableBorrowingOnReserve(SNX);
     }
 }
