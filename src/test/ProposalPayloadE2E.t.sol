@@ -77,26 +77,29 @@ contract ProposalPayloadE2ETest is Test {
             .AAVE_PROTOCOL_DATA_PROVIDER
             .getReserveConfigurationData(proposalPayload.BAT());
         assertFalse(batFrozen);
-        assertFalse(batBorrowingEnabled);
+        assertTrue(batBorrowingEnabled);
 
         /// SUSD
-        (, , , , , bool susdUsageAsCollateralEnabled, , , , bool susdFrozen) = AaveV2Ethereum
+        (, , , , , bool susdUsageAsCollateralEnabled, bool susdBorrowingEnabled, , , bool susdFrozen) = AaveV2Ethereum
             .AAVE_PROTOCOL_DATA_PROVIDER
             .getReserveConfigurationData(proposalPayload.SUSD());
         assertFalse(susdFrozen);
+        assertTrue(susdBorrowingEnabled);
         assertFalse(susdUsageAsCollateralEnabled);
 
         /// ENJ
-        (, , , , , , , , , bool enjFrozen) = AaveV2Ethereum.AAVE_PROTOCOL_DATA_PROVIDER.getReserveConfigurationData(
-            proposalPayload.ENJ()
-        );
+        (, , , , , , bool enjBorrowingEnabled, , , bool enjFrozen) = AaveV2Ethereum
+            .AAVE_PROTOCOL_DATA_PROVIDER
+            .getReserveConfigurationData(proposalPayload.ENJ());
         assertFalse(enjFrozen);
+        assertFalse(enjBorrowingEnabled);
 
         /// GUSD
-        (, , , , , bool gusdUsageAsCollateralEnabled, , , , bool gusdFrozen) = AaveV2Ethereum
+        (, , , , , bool gusdUsageAsCollateralEnabled, bool gusdBorrowingEnabled, , , bool gusdFrozen) = AaveV2Ethereum
             .AAVE_PROTOCOL_DATA_PROVIDER
             .getReserveConfigurationData(proposalPayload.GUSD());
         assertFalse(gusdFrozen);
+        assertTrue(gusdBorrowingEnabled);
         assertFalse(gusdUsageAsCollateralEnabled);
 
         /// AMPL
@@ -113,18 +116,20 @@ contract ProposalPayloadE2ETest is Test {
         assertTrue(raiFrozen);
 
         /// USDP
-        (, , , , , , bool usdpBorrowingEnabled, , , bool usdpFrozen) = AaveV2Ethereum
+        (, , , , , bool usdpUsageAsCollateralEnabled, bool usdpBorrowingEnabled, , , bool usdpFrozen) = AaveV2Ethereum
             .AAVE_PROTOCOL_DATA_PROVIDER
             .getReserveConfigurationData(proposalPayload.USDP());
         assertFalse(usdpFrozen);
-        assertFalse(usdpBorrowingEnabled);
+        assertFalse(usdpUsageAsCollateralEnabled);
+        assertTrue(usdpBorrowingEnabled);
 
         /// LUSD
-        (, , , , , , bool lusdBorrowingEnabled, , , bool lusdFrozen) = AaveV2Ethereum
+        (, , , , , bool lusdUsageAsCollateralEnabled, bool lusdBorrowingEnabled, , , bool lusdFrozen) = AaveV2Ethereum
             .AAVE_PROTOCOL_DATA_PROVIDER
             .getReserveConfigurationData(proposalPayload.LUSD());
         assertFalse(lusdFrozen);
-        assertFalse(lusdBorrowingEnabled);
+        assertFalse(lusdUsageAsCollateralEnabled);
+        assertTrue(lusdBorrowingEnabled);
 
         /// xSUSHI
         (, , , , , , bool xsushiBorrowingEnabled, , , bool xsushiFrozen) = AaveV2Ethereum

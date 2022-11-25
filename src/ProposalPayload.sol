@@ -80,13 +80,14 @@ contract ProposalPayload {
 
         /// BAT
         AaveV2Ethereum.POOL_CONFIGURATOR.unfreezeReserve(BAT);
-        AaveV2Ethereum.POOL_CONFIGURATOR.disableBorrowingOnReserve(BAT);
+        AaveV2Ethereum.POOL_CONFIGURATOR.enableBorrowingOnReserve(BAT, false);
 
         /// SUSD
         AaveV2Ethereum.POOL_CONFIGURATOR.unfreezeReserve(SUSD);
 
         /// ENJ
         AaveV2Ethereum.POOL_CONFIGURATOR.unfreezeReserve(ENJ);
+        AaveV2Ethereum.POOL_CONFIGURATOR.disableBorrowingOnReserve(ENJ);
 
         /// GUSD
         AaveV2Ethereum.POOL_CONFIGURATOR.unfreezeReserve(GUSD);
@@ -100,11 +101,9 @@ contract ProposalPayload {
 
         /// USDP
         AaveV2Ethereum.POOL_CONFIGURATOR.unfreezeReserve(USDP);
-        AaveV2Ethereum.POOL_CONFIGURATOR.disableBorrowingOnReserve(USDP);
 
         /// LUSD
         AaveV2Ethereum.POOL_CONFIGURATOR.unfreezeReserve(LUSD);
-        AaveV2Ethereum.POOL_CONFIGURATOR.disableBorrowingOnReserve(LUSD);
 
         /// xSUSHI
         AaveV2Ethereum.POOL_CONFIGURATOR.unfreezeReserve(X_SUSHI);
