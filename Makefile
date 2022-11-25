@@ -13,7 +13,7 @@ match    :; forge clean && forge test --etherscan-api-key ${ETHERSCAN_API_KEY} -
 report   :; forge clean && forge test --gas-report | sed -e/╭/\{ -e:1 -en\;b1 -e\} -ed | cat > .gas-report
 
 # Deploy and Verify Payload
-deploy-payload :; forge script script/DeployProposalPayload.s.sol:DeployProposalPayload --rpc-url ${RPC_MAINNET_URL} --broadcast --private-key ${PRIVATE_KEY} --verify --etherscan-api-key ${ETHERSCAN_API_KEY} -vvvv
+deploy-payload :; forge script script/DeployProposalPayload.s.sol:DeployProposalPayload --rpc-url ${RPC_MAINNET_URL} --broadcast --ledger --sender 0xDe30040413b26d7Aa2B6Fc4761D80eb35Dcf97aD --verify --etherscan-api-key ${ETHERSCAN_API_KEY} -vvvv
 verify-payload :; forge script script/DeployProposalPayload.s.sol:DeployProposalPayload --rpc-url ${RPC_MAINNET_URL} --verify --etherscan-api-key ${ETHERSCAN_API_KEY} -vvvv
 
 # Deploy Proposal
