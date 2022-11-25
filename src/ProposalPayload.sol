@@ -77,8 +77,8 @@ contract ProposalPayload {
         AaveV2Ethereum.POOL_CONFIGURATOR.freezeReserve(AMPL);
         AaveV2Ethereum.POOL_CONFIGURATOR.setReserveFactor(AMPL, 9_900);
 
-        /// RAI TODO
-
+        /// RAI
+        AaveV2Ethereum.POOL_CONFIGURATOR.freezeReserve(RAI);
 
         /// USDP
         AaveV2Ethereum.POOL_CONFIGURATOR.unfreezeReserve(USDP);
